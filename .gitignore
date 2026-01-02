@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Airflow
+logs/
+config/airflow.cfg
+
+# dbt
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+dbt/package-lock.yml
+
+# Secrets
+.env
+profiles.yml
+

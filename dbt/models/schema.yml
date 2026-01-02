@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: stock_history
+    description: "Daily OHLCV stock prices for the selected symbols from RAW.MARKET_DATA."
+    columns:
+      - name: date
+        description: "Trading date"
+        tests:
+          - not_null
+      - name: symbol
+        description: "Stock ticker symbol"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['AAPL', 'MSFT', 'ORCL', 'IBM']
+      - name: close
+        description: "Closing price"
+
+  - name: stock_prices_enriched
+    description: "Stock history with previous close and daily returns for each symbol."
+    columns:
+      - name: date
+        tests:
+          - not_null
+      - name: symbol
+        tests:
+          - not_null
+      - name: daily_return
+        description: "Day-over-day return based on close price."
+
+  - name: stock_summary
+    description: "Per-symbol summary metrics (avg, min, max close, volatility, avg daily return)."
+    columns:
+      - name: symbol
+        tests:
+          - not_null
+          - unique
+      - name: total_days
+        description: "Number of trading days in the lookback window."
+      - name: avg_close
+        description: "Average close price over the lookback window."
+      - name: volatility
+        description: "Standard deviation of close price."
+      - name: avg_daily_return
+        description: "Average daily return over the lookback window."
+

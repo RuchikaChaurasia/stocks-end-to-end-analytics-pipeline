@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    database: USER_DB_LIZARD
+    schema: RAW
+    description: "RAW stock tables loaded by Airflow ETL"
+    tables:
+      - name: market_data
+        identifier: MARKET_DATA
+        description: "Historical OHLCV stock price data for multiple symbols."
+      - name: forecasts
+        identifier: MY_FORECASTS_TSLA
+        description: "Snowflake ML forecasts for TSLA stock price (Lab 1)."
+
