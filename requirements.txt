@@ -1,8 +1,6 @@
-  
-  yfinance
-  pandas
-  apache-airflow-providers-snowflake
-  snowflake-connector-python
-  dbt-core
-  dbt-snowflake
-
+yfinance
+pandas
+apache-airflow-providers-snowflake
+snowflake-connector-python
+dbt-core
+dbt-snowflake
