@@ -5,7 +5,7 @@ from airflow.operators.bash import BashOperator
 from airflow.hooks.base import BaseHook
 
 # Paths inside the Airflow container
-DBT_PROJECT_DIR = "/opt/airflow/dbt/stock_lab2_dbt"   # folder that has dbt_project.yml
+DBT_PROJECT_DIR = "/opt/airflow/dbt"   # folder that has dbt_project.yml
 DBT_PROFILES_DIR = "/opt/airflow/dbt"                 # folder that has profiles.yml
 
 # Get Snowflake connection so we can pass credentials to dbt via env vars
