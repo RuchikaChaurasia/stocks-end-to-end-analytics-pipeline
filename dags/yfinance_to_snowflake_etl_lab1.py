@@ -74,15 +74,18 @@ def load(records_json):
         conn.execute(f"""
             CREATE TABLE IF NOT EXISTS {target_table} (
                 symbol VARCHAR,
-                trade_date DATE,
+                date DATE,
                 open NUMBER,
                 close NUMBER,
                 low NUMBER,
                 high NUMBER,
-                trade_volume NUMBER,
-                PRIMARY KEY (trade_date, symbol)
+                volume NUMBER,
+                created_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),
+                PRIMARY KEY (date, symbol)
             );
         """)
+        if not json.loads(records_json):
+            raise ValueError("No records extracted; refusing to wipe the table.")
         conn.execute(f"DELETE FROM {target_table}")
         records = json.loads(records_json)
         if not records:
